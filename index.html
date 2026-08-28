@@ -286,6 +286,7 @@ section {
   justify-content: center;
   position: relative;
   overflow: hidden;
+  text-decoration: none;
 }
 .card-thumb-video::before {
   content: '';
@@ -307,6 +308,7 @@ section {
   transition: all 0.3s;
   position: relative;
   z-index: 2;
+  color: var(--accent);
 }
 .card:hover .play-icon {
   background: var(--accent);
@@ -1042,11 +1044,18 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeModal();
 });
 
-// ── Card Click → Modal ──
+// ── Card Click → Modal or Aparat ──
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', () => {
     const projectId = card.dataset.project;
-    openModal(projectId);
+    const p = projects[projectId];
+    
+    // اگه ویدیو آپارات بود → لینک مستقیم آپارات باز بشه
+    if (p && p.mediaType === 'aparat') {
+      window.open(`https://www.aparat.com/v/${p.aparatId}`, '_blank');
+    } else if (p) {
+      openModal(projectId);
+    }
   });
 });
 
