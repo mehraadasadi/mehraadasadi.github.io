@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مهراد | پورتفولیو</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg-2: #111118;
+  --bg-3: #1a1a24;
+  --glass: rgba(255,255,255,0.03);
+  --glass-border: rgba(255,255,255,0.08);
+  --glass-strong: rgba(255,255,255,0.06);
+  --accent: #f0932b;
+  --accent-glow: rgba(240,147,43,0.15);
+  --text: #e8e8ed;
+  --text-dim: #888899;
+  --radius: 20px;
+  --radius-sm: 12px;
+  --blur: 24px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Vazirmatn', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ── Background Glows ── */
+.glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+.glow-1 { width: 600px; height: 600px; background: var(--accent); top: -200px; left: -200px; animation: float 20s ease-in-out infinite; }
+.glow-2 { width: 400px; height: 400px; background: #6c5ce7; bottom: -100px; right: -100px; animation: float 25s ease-in-out infinite reverse; }
+.glow-3 { width: 300px; height: 300px; background: #00b894; top: 50%; left: 50%; animation: float 18s ease-in-out infinite 5s; }
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(60px, -40px) scale(1.1); }
+  66% { transform: translate(-40px, 60px) scale(0.95); }
+}
+
+/* ── Navigation ── */
+nav {
+  position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+  z-index: 100;
+  background: rgba(10,10,15,0.7);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  padding: 12px 32px;
+  display: flex; gap: 28px;
+  transition: all 0.3s;
+}
+nav a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+nav a:hover { color: var(--accent); }
+nav .logo {
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+nav .logo span { color: var(--accent); }
+
+/* ── Hero ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 40px 20px;
+}
+
+.hero-content { max-width: 700px; }
+
+.hero .badge {
+  display: inline-block;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  padding: 8px 20px;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+  animation: fadeUp 0.8s ease both;
+}
+.hero .badge::before {
+  content: '';
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: #00b894;
+  border-radius: 50%;
+  margin-left: 8px;
+  animation: pulse 2s infinite;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  animation: fadeUp 0.8s ease 0.15s both;
+  background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  margin-bottom: 40px;
+  animation: fadeUp 0.8s ease 0.3s both;
+  font-weight: 300;
+}
+
+.hero-cta {
+  display: inline-flex;
+  gap: 16px;
+  animation: fadeUp 0.8s ease 0.45s both;
+}
+.btn {
+  padding: 14px 32px;
+  border-radius: 100px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #0a0a0f;
+  box-shadow: 0 4px 30px var(--accent-glow);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px var(--accent-glow); }
+.btn-ghost {
+  background: var(--glass);
+  color: var(--text);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: 10px;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+.scroll-hint {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  color: var(--text-dim); font-size: 0.75rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ── Section ── */
+section {
+  position: relative;
+  z-index: 1;
+  padding: 100px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.section-title h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.section-title p {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  font-weight: 300;
+}
+
+/* ── Filter Tabs ── */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 10px 24px;
+  border-radius: 100px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  color: var(--text-dim);
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+.filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.filter-btn.active {
+  background: var(--accent);
+  color: #0a0a0f;
+  border-color: var(--accent);
+}
+
+/* ── Portfolio Grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: fadeUp 0.6s ease both;
+  position: relative;
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px var(--accent-glow);
+}
+
+.card-thumb {
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: var(--bg-2);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-thumb-placeholder {
+  font-size: 3rem;
+  opacity: 0.15;
+}
+.card-thumb-video {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.card-thumb-video::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 70%);
+  opacity: 0.5;
+}
+.card-thumb-video .play-icon {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: rgba(240,147,43,0.2);
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  position: relative;
+  z-index: 2;
+}
+.card:hover .play-icon {
+  background: var(--accent);
+  color: #0a0a0f;
+  transform: scale(1.1);
+  box-shadow: 0 0 30px var(--accent-glow);
+}
+.card-thumb-video .video-label {
+  position: absolute;
+  bottom: 16px; right: 16px;
+  font-size: 0.7rem;
+  background: rgba(10,10,15,0.8);
+  padding: 4px 12px;
+  border-radius: 6px;
+  color: var(--text-dim);
+  backdrop-filter: blur(10px);
+  z-index: 2;
+}
+.card-thumb-video .video-title-thumb {
+  position: absolute;
+  top: 16px; right: 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  z-index: 2;
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,15,0.9) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+}
+.card:hover .card-overlay { opacity: 1; }
+
+.card-body { padding: 24px; }
+.card-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-glow);
+  border-radius: 6px;
+  padding: 4px 10px;
+  margin-bottom: 12px;
+}
+.card h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.card p {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  font-weight: 300;
+}
+
+/* ── Modal ── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.modal-backdrop.open {
+  display: flex;
+  opacity: 1;
+}
+
+.modal {
+  background: var(--bg-2);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: translateY(30px) scale(0.95);
+  transition: transform 0.3s;
+}
+.modal-backdrop.open .modal {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px; left: 16px;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--glass-strong);
+  border: 1px solid var(--glass-border);
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  z-index: 10;
+}
+.modal-close:hover {
+  background: var(--accent);
+  color: #0a0a0f;
+  border-color: var(--accent);
+}
+
+.modal-media {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+.modal-media iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+.modal-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-body {
+  padding: 32px;
+}
+.modal-body .card-tag {
+  font-size: 0.75rem;
+  margin-bottom: 16px;
+}
+.modal-body h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.modal-body .description {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.modal-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.detail-item {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+}
+.detail-item .label {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.detail-item .value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.modal-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+.modal-gallery img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.modal-gallery img:hover {
+  border-color: var(--accent);
+  transform: scale(1.05);
+}
+
+.modal-gallery-title {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+/* ── About Section ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.about-text h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.about-text p {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.stat {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 28px 20px;
+  text-align: center;
+  backdrop-filter: var(--blur);
+}
+.stat-number {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-weight: 400;
+}
+
+/* ── Skills ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+}
+.skill-chip {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  padding: 20px 16px;
+  text-align: center;
+  transition: all 0.3s;
+  cursor: default;
+}
+.skill-chip:hover {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+  transform: translateY(-4px);
+}
+.skill-chip .icon { font-size: 1.6rem; margin-bottom: 8px; }
+.skill-chip .name { font-size: 0.8rem; font-weight: 500; }
+
+/* ── Contact ── */
+.contact-box {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 60px 40px;
+  text-align: center;
+  backdrop-filter: var(--blur);
+  max-width: 600px;
+  margin: 0 auto;
+}
+.contact-box h3 { font-size: 1.6rem; font-weight: 700; margin-bottom: 12px; }
+.contact-box p { color: var(--text-dim); margin-bottom: 32px; font-size: 0.9rem; }
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.contact-link {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 24px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+}
+.contact-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ── Footer ── */
+footer {
+  position: relative; z-index: 1;
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  border-top: 1px solid var(--glass-border);
+  margin-top: 80px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  nav { padding: 10px 20px; gap: 16px; top: 10px; }
+  nav a { font-size: 0.78rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .stat { padding: 20px 12px; }
+  .stat-number { font-size: 1.6rem; }
+  .grid { grid-template-columns: 1fr; }
+  section { padding: 60px 16px; }
+  .modal-body { padding: 20px; }
+  .modal-body h2 { font-size: 1.3rem; }
+  .modal-details { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── Scroll Reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 100px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+</style>
+</head>
+<body>
+
+<!-- Background Glows -->
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="glow glow-3"></div>
+
+<!-- Navigation -->
+<nav>
+  <span class="logo">مهــ<span>ـراد</span></span>
+  <a href="#portfolio">نمونه‌کارها</a>
+  <a href="#about">درباره</a>
+  <a href="#contact">ارتباط</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge">در دسترس برای پروژه‌های جدید</div>
+    <h1>تولیدکننده<br>تیزر تبلیغاتی</h1>
+    <p>ایده‌هات رو به ویدئوهای خیره‌کننده تبدیل می‌کنم.<br>پرومو موشن · تیزر · انیمیشن</p>
+    <div class="hero-cta">
+      <a href="#portfolio" class="btn btn-primary">نمونه‌کارها</a>
+      <a href="#contact" class="btn btn-ghost">تماس با من</a>
+    </div>
+  </div>
+  <div class="scroll-hint">↓ اسکرول کن</div>
+</section>
+
+<!-- Portfolio -->
+<section id="portfolio">
+  <div class="section-title reveal">
+    <h2>نمونه‌کارها</h2>
+    <p>انتخابی از جدیدترین پروژه‌ها</p>
+  </div>
+  
+  <div class="filters reveal">
+    <button class="filter-btn active" data-filter="all">همه</button>
+    <button class="filter-btn" data-filter="video">ویدیو</button>
+    <button class="filter-btn" data-filter="image">تصویر</button>
+    <button class="filter-btn" data-filter="text">متن</button>
+  </div>
+
+  <div class="grid">
+    <!-- Project 1 -->
+    <div class="card reveal" data-type="video" data-project="1">
+      <div class="card-thumb-video">
+        <span class="video-title-thumb">▶ تیزر معرفی برند</span>
+        <div class="play-icon">▶</div>
+        <span class="video-label">▶ آپارات</span>
+        <div class="card-overlay"><span style="font-size:0.8rem;color:var(--text-dim)">▶ مشاهده جزئیات</span></div>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">ویدیو</span>
+        <h3>تیزر معرفی برند</h3>
+        <p>تیزر ۳۰ ثانیه‌ای برای لانچ محصول جدید با موشن‌گرافیک مدرن</p>
+      </div>
+    </div>
+    <!-- Project 2 -->
+    <div class="card reveal" data-type="video" data-project="2">
+      <div class="card-thumb-video">
+        <span class="video-title-thumb">▶ پرومو ریلز</span>
+        <div class="play-icon">▶</div>
+        <span class="video-label">▶ آپارات</span>
+        <div class="card-overlay"><span style="font-size:0.8rem;color:var(--text-dim)">▶ مشاهده جزئیات</span></div>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">ویدیو</span>
+        <h3>پرومو ریلز اینستاگرام</h3>
+        <p>مجموعه ۵ ویدیو برندینگ برای شبکه‌های اجتماعی</p>
+      </div>
+    </div>
+    <!-- Project 3 -->
+    <div class="card reveal" data-type="image" data-project="3">
+      <div class="card-thumb">
+        <span class="card-thumb-placeholder">🖼️</span>
+        <div class="card-overlay"><span style="font-size:0.8rem;color:var(--text-dim)">مشاهده جزئیات</span></div>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">تصویر</span>
+        <h3>پوستر رویداد</h3>
+        <p>طراحی پوستر حرفه‌ای برای کنفرانس تکنولوژی</p>
+      </div>
+    </div>
+    <!-- Project 4 -->
+    <div class="card reveal" data-type="video" data-project="4">
+      <div class="card-thumb-video">
+        <span class="video-title-thumb">▶ ویدیو آموزشی</span>
+        <div class="play-icon">▶</div>
+        <span class="video-label">▶ آپارات</span>
+        <div class="card-overlay"><span style="font-size:0.8rem;color:var(--text-dim)">▶ مشاهده جزئیات</span></div>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">ویدیو</span>
+        <h3>ویدیو آموزشی</h3>
+        <p>موشن‌گرافیک آموزشی با انیمیشن تایپوگرافی</p>
+      </div>
+    </div>
+    <!-- Project 5 -->
+    <div class="card reveal" data-type="text" data-project="5">
+      <div class="card-thumb">
+        <span class="card-thumb-placeholder">✍️</span>
+        <div class="card-overlay"><span style="font-size:0.8rem;color:var(--text-dim)">مشاهده جزئیات</span></div>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">متن</span>
+        <h3>اسکریپت تیزر</h3>
+        <p>سناریو و متن گویندگی برای تیزرهای چند پلتفرمی</p>
+      </div>
+    </div>
+    <!-- Project 6 -->
+    <div class="card reveal" data-type="image" data-project="6">
+      <div class="card-thumb">
+        <span class="card-thumb-placeholder">🖼️</span>
+        <div class="card-overlay"><span style="font-size:0.8rem;color:var(--text-dim)">مشاهده جزئیات</span></div>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">تصویر</span>
+        <h3>هویت بصری</h3>
+        <p>طراحی لگو و هویت بصری برند استارتاپ</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <h3>کمی درباره من</h3>
+      <p>من مهرادم، حدود ۸ ساله که تیزر تبلیغاتی تولید می‌کنم. از ایده تا تحویل نهایی، تمام مراحل رو خودم انجام می‌دم.</p>
+      <p>تمرکزم روی پرومو موشن‌های تمیز، ریلز‌های خوراک اجتماعی و انیمیشن‌های برندینگه. با Adobe Premiere، After Effects و ابزارهای AI جدید کار می‌کنم.</p>
+    </div>
+    <div class="stats reveal">
+      <div class="stat">
+        <div class="stat-number">+150</div>
+        <div class="stat-label">پروژه انجام‌شده</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">+8</div>
+        <div class="stat-label">سال تجربه</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">+60</div>
+        <div class="stat-label">مشتری راضی</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section>
+  <div class="section-title reveal">
+    <h2>ابزارها</h2>
+    <p>نرم‌افزارهایی که باهاشون کار می‌کنم</p>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="skill-chip"><div class="icon">🎞️</div><div class="name">Premiere Pro</div></div>
+    <div class="skill-chip"><div class="icon">✨</div><div class="name">After Effects</div></div>
+    <div class="skill-chip"><div class="icon">🎨</div><div class="name">Photoshop</div></div>
+    <div class="skill-chip"><div class="icon">🖌️</div><div class="name">Illustrator</div></div>
+    <div class="skill-chip"><div class="icon">🤖</div><div class="name">AI Tools</div></div>
+    <div class="skill-chip"><div class="icon">🎙️</div><div class="name">Audition</div></div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="contact-box reveal">
+    <h3>بیا صحبت کنیم</h3>
+    <p>اگه پروژه‌ای تو ذهنته، در میون بذار ببینیم چی‌شه</p>
+    <div class="contact-links">
+      <a href="mailto:example@email.com" class="contact-link">📧 ایمیل</a>
+      <a href="#" class="contact-link">📱 تلگرام</a>
+      <a href="#" class="contact-link">📷 اینستاگرام</a>
+      <a href="#" class="contact-link">🎬 پورتفولیو</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>© ۱۴۰۵ مهراد · طراحی‌شده با ❤️ و کافئین</p>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     MODAL
+═══════════════════════════════════════ -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-media" id="modalMedia"></div>
+    <div class="modal-body">
+      <span class="card-tag" id="modalTag"></span>
+      <h2 id="modalTitle"></h2>
+      <p class="description" id="modalDesc"></p>
+      <div class="modal-details" id="modalDetails"></div>
+      <div id="modalGallerySection" style="display:none">
+        <div class="modal-gallery-title">📎 تصاویر مرتبط</div>
+        <div class="modal-gallery" id="modalGallery"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Project Data ──
+const projects = {
+  1: {
+    type: 'video',
+    tag: 'ویدیو',
+    title: 'تیزر معرفی برند',
+    mediaType: 'aparat',
+    aparatId: 'n8036h9',
+    description: 'تیزر ۳۰ ثانیه‌ای برای لانچ محصول جدید یک برند فناوری. این پروژه شامل موشن‌گرافیک مدرن با ترکیب انیمیشن سه‌بعدی و دوبعدی بود. چالش اصلی این پروژه انتقال پیام نوآوری و اعتماد در زمان محدود ۳۰ ثانیه‌ای بود.',
+    details: [
+      { label: 'مشتری', value: 'برند فناوری X' },
+      { label: 'مدت', value: '۳۰ ثانیه' },
+      { label: 'سال', value: '۱۴۰۴' },
+      { label: 'فرمت', value: '4K + 1080p' }
+    ],
+    gallery: [
+      'https://placehold.co/400x400/1a1a24/f0932b?text=Storyboard',
+      'https://placehold.co/400x400/1a1a24/f0932b?text=Behind+the+Scenes',
+      'https://placehold.co/400x400/1a1a24/f0932b?text=Color+Grading'
+    ]
+  },
+  2: {
+    type: 'video',
+    tag: 'ویدیو',
+    title: 'پرومو ریلز اینستاگرام',
+    mediaType: 'aparat',
+    aparatId: 'VIDEO_ID_2',
+    description: 'مجموعه ۵ ویدیوی برندینگ برای شبکه‌های اجتماعی. هر ویدیو ۱۵ ثانیه‌ای با استایل بصری یکپارچه برای تقویت حضور برند در پلتفرم‌های مختلف.',
+    details: [
+      { label: 'مشتری', value: 'برند پوشاک Y' },
+      { label: 'تعداد', value: '۵ ویدیو' },
+      { label: 'سال', value: '۱۴۰۴' },
+      { label: 'پلتفرم', value: 'اینستاگرام' }
+    ],
+    gallery: [
+      'https://placehold.co/400x400/1a1a24/f0932b?text=Reel+1',
+      'https://placehold.co/400x400/1a1a24/f0932b?text=Reel+2',
+      'https://placehold.co/400x400/1a1a24/f0932b?text=Reel+3'
+    ]
+  },
+  3: {
+    type: 'image',
+    tag: 'تصویر',
+    title: 'پوستر رویداد',
+    media: '<img src="https://placehold.co/1280x720/1a1a24/f0932b?text=پوستر+رویداد" alt="پوستر رویداد">',
+    description: 'طراحی پوستر حرفه‌ای برای کنفرانس تکنولوژی با رویکرد مینیمال و مدرن. چالش اصلی انتقال حس نوآوری و آینده‌نگری از طریق طراحی بصری بود.',
+    details: [
+      { label: 'مشتری', value: 'کنفرانس تکنولوژی' },
+      { label: 'سایز', value: 'A1 + A3' },
+      { label: 'سال', value: '۱۴۰۳' },
+      { label: 'سبک', value: 'مینیمال' }
+    ],
+    gallery: [
+      'https://placehold.co/400x400/1a1a24/f0932b?text=Mockup+1',
+      'https://placehold.co/400x400/1a1a24/f0932b?text=Mockup+2'
+    ]
+  },
+  4: {
+    type: 'video',
+    tag: 'ویدیو',
+    title: 'ویدیو آموزشی',
+    mediaType: 'aparat',
+    aparatId: 'VIDEO_ID_3',
+    description: 'موشن‌گرافیک آموزشی با انیمیشن تایپوگرافی برای آموزش استفاده از یک نرم‌افزار مدیریت پروژه. ویدیو ۳ دقیقه‌ای که مفاهیم پیچیده را ساده و جذاب انتقال می‌دهد.',
+    details: [
+      { label: 'مشتری', value: 'استارتاپ Z' },
+      { label: 'مدت', value: '۳ دقیقه' },
+      { label: 'سال', value: '۱۴۰۴' },
+      { label: 'سبک', value: 'موشن‌گرافیک' }
+    ],
+    gallery: [
+      'https://placehold.co/400x400/1a1a24/f0932b?text=Styleframes',
+      'https://placehold.co/400x400/1a1a24/f0932b?text=Typography'
+    ]
+  },
+  5: {
+    type: 'text',
+    tag: 'متن',
+    title: 'اسکریپت تیزر',
+    media: '<img src="https://placehold.co/1280x720/1a1a24/f0932b?text=اسکریپت+تیزر" alt="اسکریپت تیزر">',
+    description: 'سناریو و متن گویندگی برای تیزرهای چند پلتفرمی. شامل ۱۰ اسکریپت ۱۵ تا ۶۰ ثانیه‌ای برای پلتفرم‌های مختلف (تلویزیون، اینستاگرام، یوتیوب).',
+    details: [
+      { label: 'مشتری', value: 'چندین برند' },
+      { label: 'تعداد', value: '۱۰ اسکریپت' },
+      { label: 'سال', value: '۱۴۰۳-۱۴۰۴' },
+      { label: 'پلتفرم', value: 'چند پلتفرمی' }
+    ],
+    gallery: []
+  },
+  6: {
+    type: 'image',
+    tag: 'تصویر',
+    title: 'هویت بصری',
+    media: '<img src="https://placehold.co/1280x720/1a1a24/f0932b?text=هویت+بصری" alt="هویت بصری">',
+    description: 'طراحی لگو و هویت بصری کامل برای یک استارتاپ حوزه فناوری بهداشت. شامل لگو، پالت رنگ، تایپوگرافی و قالب‌های استفاده در پلتفرم‌های مختلف.',
+    details: [
+      { label: 'مشتری', value: 'استارتاپ هلتهک' },
+      { label: 'تحویل', value: 'لگو + برندبوک' },
+      { label: 'سال', value: '۱۴۰۳' },
+      { label: 'سبک', value: 'مدرن' }
+    ],
+    gallery: [
+      'https://placehold.co/400x400/1a1a24/f0932b?text=Logo',
+      'https://placehold.co/400x400/1a1a24/f0932b?text=Business+Cards',
+      'https://placehold.co/400x400/1a1a24/f0932b?text=Brand+Book'
+    ]
+  }
+};
+
+// ── Modal ──
+const modalBackdrop = document.getElementById('modalBackdrop');
+const modalClose = document.getElementById('modalClose');
+const modalMedia = document.getElementById('modalMedia');
+const modalTag = document.getElementById('modalTag');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalDetails = document.getElementById('modalDetails');
+const modalGallerySection = document.getElementById('modalGallerySection');
+const modalGallery = document.getElementById('modalGallery');
+
+function openModal(projectId) {
+  const p = projects[projectId];
+  if (!p) return;
+  
+  if (p.mediaType === 'aparat') {
+    modalMedia.innerHTML = `<iframe src="https://www.aparat.com/v/${p.aparatId}/embed" allowfullscreen></iframe>`;
+  } else if (p.media) {
+    modalMedia.innerHTML = p.media;
+  } else {
+    modalMedia.innerHTML = '';
+  }
+  
+  modalTag.textContent = p.tag;
+  modalTitle.textContent = p.title;
+  modalDesc.textContent = p.description;
+  
+  modalDetails.innerHTML = p.details.map(d => `
+    <div class="detail-item">
+      <div class="label">${d.label}</div>
+      <div class="value">${d.value}</div>
+    </div>
+  `).join('');
+  
+  if (p.gallery.length > 0) {
+    modalGallerySection.style.display = '';
+    modalGallery.innerHTML = p.gallery.map(src => `<img src="${src}" alt="تصویر مرتبط">`).join('');
+  } else {
+    modalGallerySection.style.display = 'none';
+  }
+  
+  modalBackdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modalBackdrop.classList.remove('open');
+  document.body.style.overflow = '';
+  modalMedia.innerHTML = '';
+}
+
+modalClose.addEventListener('click', closeModal);
+modalBackdrop.addEventListener('click', (e) => {
+  if (e.target === modalBackdrop) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// ── Card Click → Modal ──
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('click', () => {
+    const projectId = card.dataset.project;
+    openModal(projectId);
+  });
+});
+
+// ── Filter ──
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    
+    cards.forEach(card => {
+      if (filter === 'all' || card.dataset.type === filter) {
+        card.style.display = '';
+        card.style.animation = 'fadeUp 0.5s ease both';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+// ── Scroll Reveal ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Smooth nav scroll ──
+document.querySelectorAll('nav a').forEach(a => {
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
