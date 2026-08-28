@@ -995,7 +995,11 @@ function openModal(projectId) {
   if (!p) return;
   
   if (p.mediaType === 'aparat') {
-    modalMedia.innerHTML = `<iframe src="https://www.aparat.com/v/${p.aparatId}/embed" allowfullscreen></iframe>`;
+    modalMedia.innerHTML = `<div id="aparat-container"></div>`;
+    const script = document.createElement('script');
+    script.src = `https://www.aparat.com/v/${p.aparatId}/script`;
+    script.async = true;
+    document.getElementById('aparat-container').appendChild(script);
   } else if (p.media) {
     modalMedia.innerHTML = p.media;
   } else {
